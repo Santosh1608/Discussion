@@ -1,0 +1,11 @@
+<%= @topic.title %>
+<input type="text" name="comment"/>
+<button>Add comment</button>
+
+<ul class="collection">
+</ul>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    createSocket(<%= @topic.id %>)    
+});
+</script>

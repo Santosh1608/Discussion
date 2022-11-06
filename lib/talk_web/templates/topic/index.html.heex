@@ -1,0 +1,18 @@
+<div>
+  <h1>List out topics</h1>
+  
+  <ul>
+    <%= for topic <- @topics do %>
+    <li>
+    <%= link topic.title, to: Routes.topic_path(@conn, :show, topic) %>
+    <span>
+      <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id, do: link "Edit", to: Routes.topic_path(@conn,:edit, topic)%>
+      <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id, do: link "Delete", to: Routes.topic_path(@conn, :delete, topic), method: :delete , data: [confirm: "Are you sure?"]%>
+    </span>
+    </li>
+    <% end %>
+  </ul>
+  
+  <span><%= if @conn.assigns.user, do: link "New Topic", to: Routes.topic_path(@conn, :new) %></span>
+
+</div>
